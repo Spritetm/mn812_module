@@ -1,0 +1,244 @@
+
+Xilinx Mapping Report File for Design 'audsch'
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+Design Information
+------------------
+Command Line   : m1map -p xc3020a-7-pc68 -o map.ncd audsch.ngd audsch.pcf 
+Target Device  : x3020a
+Target Package : pc68
+Target Speed   : -7
+Mapper Version : xc3000a -- D.19
+
+Design Summary
+--------------
+   Number of errors:        0
+   Number of warnings:      0
+   Number of CLBs:             46 out of    64   71%
+      CLB Flip Flops:      28
+   Number of bonded IOBs:      45 out of    58   77%
+      IOB Flip Flops:       0
+      IOB Latches:          0
+   Number of GCLKs:             1 out of     1  100%
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Design Attributes
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - Added Logic
+Section 7 - Expanded Logic
+Section 8 - Signal Cross-Reference
+Section 9 - Symbol Cross-Reference
+Section 10 - IOB Properties
+Section 11 - RPMs
+Section 12 - Guide Report
+Section 13 - Area Group Summary
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+
+Section 3 - Design Attributes
+-----------------------------
+ Attribute LOC
+   "P20" for signal(s) $Net00022_ on symbol "$I100"
+   "P17" for signal(s) $Net00049_ on symbol "$I104"
+   "P15" for signal(s) $Net00025_ on symbol "$I106"
+   "P14" for signal(s) $Net00026_ on symbol "$I108"
+   "P13" for signal(s) $Net00029_ on symbol "$I110"
+   "P8" for signal(s) $Net00030_ on symbol "$I112"
+   "P7" for signal(s) $Net00031_ on symbol "$I114"
+   "P6" for signal(s) $Net00032_ on symbol "$I116"
+   "P5" for signal(s) $Net00035_ on symbol "$I118"
+   "P4" for signal(s) $Net00036_ on symbol "$I120"
+   "P3" for signal(s) $Net00037_ on symbol "$I122"
+   "P2" for signal(s) $Net00050_ on symbol "$I124"
+   "P58" on symbol "$I127"
+   "P56" on symbol "$I128"
+   "P55" on symbol "$I130"
+   "P53" on symbol "$I132"
+   "P51" on symbol "$I134"
+   "P49" on symbol "$I136"
+   "P48" on symbol "$I138"
+   "P68" for signal(s) $Net00063_ on symbol "$I141"
+   "P67" for signal(s) $Net00040_ on symbol "$I143"
+   "P11" for signal(s) $Net00117_ on symbol "$I158"
+   "P16" for signal(s) $Net00119_ on symbol "$I161"
+   "P19" for signal(s) $Net00057_ on symbol "$I164"
+   "P12" for signal(s) $Net00121_ on symbol "$I166"
+   "P54" on symbol "$I170"
+   "P61" on symbol "$I172"
+   "P32" on symbol "$I188"
+   "P33" on symbol "$I191"
+   "P31" on symbol "$I193"
+   "P29" on symbol "$I195"
+   "P24" on symbol "$I42"
+   "P57" for signal(s) $Net00005_ on symbol "$I43"
+   "P43" for signal(s) $Net00013_ on symbol "$I48"
+   "P46" for signal(s) $Net00014_ on symbol "$I49"
+   "P42" for signal(s) $Net00015_ on symbol "$I50"
+   "P47" for signal(s) $Net00016_ on symbol "$I51"
+   "P41" for signal(s) $Net00017_ on symbol "$I54"
+   "P39" for signal(s) $Net00007_ on symbol "$I55"
+   "P64" for signal(s) $Net00062_ on symbol "$I82"
+   "P65" for signal(s) $Net00064_ on symbol "$I85"
+   "P66" for signal(s) $Net00023_ on symbol "$I88"
+   "P23" for signal(s) $Net00065_ on symbol "$I91"
+   "P22" for signal(s) $Net00066_ on symbol "$I94"
+   "P21" for signal(s) $Net00019_ on symbol "$I97"
+
+Section 4 - Removed Logic Summary
+---------------------------------
+  20 block(s) removed
+  54 block(s) optimized away
+  20 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+The signal "$I40/D5" is loadless and has been removed.
+ Loadless block "$I40/$1I32" (AND4B1) removed.
+The signal "$I40/D6" is loadless and has been removed.
+ Loadless block "$I40/$1I31" (AND4B1) removed.
+The signal "$I40/D7" is loadless and has been removed.
+ Loadless block "$I40/$1I30" (AND4) removed.
+The signal "$I6/CEO" is loadless and has been removed.
+ Loadless block "$I6/$1I54" (AND2) removed.
+  The signal "$I6/TC" is loadless and has been removed.
+   Loadless block "$I6/$1I22" (AND5) removed.
+The signal "$I34/CEO" is loadless and has been removed.
+ Loadless block "$I34/$1I67" (AND2) removed.
+  The signal "$I34/TC" is loadless and has been removed.
+   Loadless block "$I34/$1I31" (AND4) removed.
+    The signal "$I34/Q3" is loadless and has been removed.
+     Loadless block "$I34/Q3/$1I35" (FDCE) removed.
+      The signal "$I34/Q3/TQ" is loadless and has been removed.
+       Loadless block "$I34/Q3/$1I32" (XOR2) removed.
+        The signal "$I34/T3" is loadless and has been removed.
+         Loadless block "$I34/$1I32" (AND3) removed.
+The signal "LADD<7>" is loadless and has been removed.
+ Loadless block "$I152/Q7" (FDCE) removed.
+  The signal "BUSD<7>" is loadless and has been removed.
+   Loadless block "$I154" (GND) removed.
+  The signal "$Net00084_" is loadless and has been removed.
+   Loadless block "$I153" (GND) removed.
+The signal "LADD<6>" is loadless and has been removed.
+ Loadless block "$I152/Q6" (FDCE) removed.
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "$I78/$Net00027_" is unused and has been removed.
+ Unused block "$I78/$1I40" (VCC) removed.
+The signal "$I78/$Net00028_" is unused and has been removed.
+ Unused block "$I78/$1I43" (GND) removed.
+The signal "$I174/$Net00027_" is unused and has been removed.
+ Unused block "$I174/$1I40" (VCC) removed.
+The signal "$I174/$Net00028_" is unused and has been removed.
+ Unused block "$I174/$1I43" (GND) removed.
+The signal "$I177/$Net00027_" is unused and has been removed.
+ Unused block "$I177/$1I40" (VCC) removed.
+The signal "$I177/$Net00028_" is unused and has been removed.
+ Unused block "$I177/$1I43" (GND) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+VCC 		$I34/$1I58
+VCC 		$I6/$1I9
+GND 		$I16
+AND2B1 		$I15/$1I77
+GND 		$I18
+AND3B1 		$I15/$1I73
+GND 		$I19
+AND2B1 		$I15/$1I18
+OR2 		$I15/$1I70
+AND4 		$I15/$1I80
+GND 		$I197
+AND3B1 		$I15/$1I86
+GND 		$I198
+AND2B1 		$I15/$1I90
+OR2 		$I15/$1I84
+AND2 		$I15/$1I83
+GND 		$I20
+AND3B1 		$I15/$1I21
+GND 		$I200
+AND3B1 		$I15/$1I33
+VCC 		$I201
+AND3B1 		$I15/$1I36
+GND 		$I202
+AND2B1 		$I15/$1I40
+OR2 		$I15/$1I42
+AND4 		$I15/$1I60
+GND 		$I21
+AND2B1 		$I15/$1I25
+OR2 		$I15/$1I26
+AND3 		$I15/$1I159
+GND 		$I26
+AND2B1 		$I15/$1I43
+GND 		$I27
+AND3B1 		$I15/$1I54
+GND 		$I28
+AND2B1 		$I15/$1I47
+OR2 		$I15/$1I45
+AND2 		$I15/$1I61
+GND 		$I29
+AND3B1 		$I15/$1I52
+GND 		$I30
+AND2B1 		$I15/$1I28
+OR2 		$I15/$1I57
+GND 		$I32
+AND3B1 		$I15/$1I67
+OR2 		$I15/$1I69
+AND2 		$I15/$1I14
+OR4 		$I15/$1I5/$1I69
+VCC 		$I56
+GND 		$I61
+AND2B1 		$I7/M01/$1I7
+GND 		$I155
+VCC 		$I167
+GND 		$I168
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - Added Logic
+-----------------------
+
+Section 7 - Expanded Logic
+--------------------------
+To enable this section, set the detailed map report option and rerun map.
+
+Section 8 - Signal Cross-Reference
+----------------------------------
+To enable this section, set the detailed map report option and rerun map.
+
+Section 9 - Symbol Cross-Reference
+----------------------------------
+To enable this section, set the detailed map report option and rerun map.
+
+Section 10 - IOB Properties
+---------------------------
+
+Section 11 - RPMs
+-----------------
+
+Section 12 - Guide Report
+-------------------------
+Guide not run on this design.

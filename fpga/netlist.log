@@ -1,0 +1,32 @@
+Loading - C:\XILINX\ACTIVE\PROJECTS\AUDSCH\audsch.alb
+   Loading library default timing values
+Info 9239: The following node is loadless:
+   NODE: B16, $I31.GROUND.
+Info 9240: The following node is sourceless:
+   NODE: $Net00026_, $I33.I2.
+Loading - CB16CE
+   Loading library default timing values
+Loading - FTCE
+   Loading library default timing values
+Loading - M8_1E
+   Loading library default timing values
+Loading - M2_1
+   Loading library default timing values
+Loading - M2_1E
+   Loading library default timing values
+Loading - COMPM16
+   Loading library default timing values
+Loading - OR8
+   Loading library default timing values
+Loading - CB4CE
+   Loading library default timing values
+Loading - D3_8E
+   Loading library default timing values
+===============================
+Memory usage statistics:
+    Total number of allocated memory blocks: 295 (0)
+    Total number of memory reallocations: 3
+    Total length of memory used to load the netlist: 256 kB (0)
+    Number of system memory blocks (total/long): 1/0
+Netlist loaded in: 1 seconds
+===============================

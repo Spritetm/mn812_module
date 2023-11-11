@@ -1,0 +1,306 @@
+ngdbuild -p xc3020a-7-pc68 -uc audsch.ucf -dd .. c:\xilinx\active\projects\audsch\audsch.edn audsch.ngd
+Release  - ngdbuild D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+Command Line: ngdbuild -p xc3020a-7-pc68 -uc audsch.ucf -dd ..
+c:\xilinx\active\projects\audsch\audsch.edn audsch.ngd 
+
+Launcher: Executing edif2ngd "c:\xilinx\active\projects\audsch\audsch.edn"
+"c:\xilinx\active\projects\audsch\xproj\ver1\audsch.ngo"
+Release  - edif2ngd D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+Writing the design to
+"c:/xilinx/active/projects/audsch/xproj/ver1/audsch.ngo"...
+Reading NGO file "c:/xilinx/active/projects/audsch/xproj/ver1/audsch.ngo" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "audsch.ucf" ...
+
+Checking timing specifications ...
+
+Checking expanded design ...
+WARNING:NgdBuild:454 - logical net '$I40/D5' has no load
+WARNING:NgdBuild:454 - logical net '$I40/D6' has no load
+WARNING:NgdBuild:454 - logical net '$I40/D7' has no load
+WARNING:NgdBuild:454 - logical net '$I6/CEO' has no load
+WARNING:NgdBuild:454 - logical net '$I34/CEO' has no load
+WARNING:NgdBuild:454 - logical net 'LADD<7>' has no load
+WARNING:NgdBuild:454 - logical net 'LADD<6>' has no load
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   7
+
+Writing NGD file "audsch.ngd" ...
+
+Writing NGDBUILD log file "audsch.bld"...
+
+NGDBUILD done.
+
+==================================================
+
+map -p xc3020a-7-pc68 -o map.ncd audsch.ngd audsch.pcf
+Release  - Map D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+Reading NGD file "audsch.ngd"...
+Using target part "3020apc68-7".
+MAP XC3000A command-line options:
+   Partname = "xc3020a-7-pc68".
+   Covermode = "area".
+   Register Ordering: ENABLED
+   Pack Unrelated Logic into CLBs targeting 97% of CLB resources.
+   Process the file:  audsch.ngd.
+Processing logical timing constraints...
+Processing global clock buffers...
+Verifying CLBMAPs...
+Removing unused logic...
+Processing CLBMAPs...
+Optimizing...
+Running physical design DRC...
+
+Design Summary:
+   Number of errors:        0
+   Number of warnings:      0
+   Number of CLBs:             46 out of    64   71%
+      CLB Flip Flops:      28
+   Number of bonded IOBs:      45 out of    58   77%
+      IOB Flip Flops:       0
+      IOB Latches:          0
+   Number of GCLKs:             1 out of     1  100%
+Writing design file "map.ncd"...
+
+Removed Logic Summary:
+  20 block(s) removed
+  54 block(s) optimized away
+  20 signal(s) removed
+
+Mapping completed.
+See MAP report file "map.mrp" for details.
+
+==================================================
+
+par  -w -ol 2 -d 0 map.ncd audsch.ncd audsch.pcf
+Release  - Par D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+
+
+
+Constraints file: audsch.pcf
+
+Loading device database for application par from file "map.ncd".
+   "audsch" is an NCD, version 2.32, device xc3020a, package pc68, speed -7
+Loading device for application par from file '3020a.nph' in environment
+C:/Xilinx.
+Device speed data version:  C  .
+
+
+Resolving physical constraints.
+Finished resolving physical constraints.
+
+Device utilization summary:
+
+   Number of External IOBs            45 out of 58     77%
+
+   Number of CLBs                     46 out of 64     71%
+
+   Number of GCLOCKs                   1 out of 1     100%
+
+
+
+Overall effort level (-ol):   2 (set by user)
+Placer effort level (-pl):    4 (set by user)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    2 (set by user)
+
+Starting initial Placement phase.  REAL time: 0 secs 
+Finished initial Placement phase.  REAL time: 0 secs 
+
+Starting Constructive Placer.  REAL time: 0 secs 
+Placer score = 52946
+Placer score = 44313
+Placer score = 44246
+Placer score = 44015
+Placer score = 31380
+Placer score = 24563
+Placer score = 22528
+Placer score = 20353
+Placer score = 18290
+Placer score = 15508
+Placer score = 11282
+Placer score = 10450
+Placer score = 9669
+Placer score = 9577
+Placer score = 9535
+Placer score = 9526
+Finished Constructive Placer.  REAL time: 0 secs 
+
+Writing design to file "audsch.ncd".
+
+Starting Optimizing Placer.  REAL time: 0 secs 
+Optimizing  
+Swapped 1 comps.
+Xilinx Placer [1]   9464   REAL time: 0 secs 
+Finished Optimizing Placer.  REAL time: 0 secs 
+
+Writing design to file "audsch.ncd".
+
+Total REAL time to Placer completion: 0 secs 
+Total CPU time to Placer completion: 1 secs 
+
+0 connection(s) routed; 228 unrouted active, 6 unrouted PWR/GND.
+Starting router resource preassignment
+Completed router resource preassignment. REAL time: 0 secs 
+Starting iterative routing. 
+Routing active signals.
+End of iteration 1 
+228 successful; 0 unrouted active,
+   6 unrouted PWR/GND; (0) REAL time: 0 secs 
+End of iteration 2 
+228 successful; 0 unrouted active,
+   6 unrouted PWR/GND; (0) REAL time: 0 secs 
+Constraints are met. 
+Routing PWR/GND nets.
+Power and ground nets completely routed. 
+Writing design to file "audsch.ncd".
+Starting cleanup 
+Improving routing.
+End of cleanup iteration 1 
+234 successful; 0 unrouted; (0) REAL time: 0 secs 
+Writing design to file "audsch.ncd".
+Total REAL time: 0 secs 
+Total CPU  time: 1 secs 
+End of route.  234 routed (100.00%); 0 unrouted.
+No errors found. 
+Completely routed. 
+
+This design was run without timing constraints.  It is likely that much better
+circuit performance can be obtained by trying either or both of the following:
+
+  - Enabling the Delay Based Cleanup router pass, if not already enabled
+  - Supplying timing constraints in the input design
+
+
+Total REAL time to Router completion: 0 secs 
+Total CPU time to Router completion: 1 secs 
+
+Generating PAR statistics.
+Writing design to file "audsch.ncd".
+
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 0 secs 
+Total CPU time to PAR completion: 1 secs 
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+PAR done.
+
+==================================================
+
+trce audsch.ncd audsch.pcf -e 3  -o audsch.twr 
+Release  - Trace D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+
+
+Loading device database for application trce from file "audsch.ncd".
+   "audsch" is an NCD, version 2.32, device xc3020a, package pc68, speed -7
+Loading device for application trce from file '3020a.nph' in environment
+C:/Xilinx.
+--------------------------------------------------------------------------------
+Xilinx TRACE, Version D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+trce audsch.ncd audsch.pcf -e 3 -o audsch.twr
+
+Design file:              audsch.ncd
+Physical constraint file: audsch.pcf
+Device,speed:             xc3020a,-7 (C  )
+Report level:             error report
+--------------------------------------------------------------------------------
+
+WARNING:Timing:2491 - No timing constraints found, doing default enumeration.
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0
+
+Constraints cover 638 paths, 96 nets, and 228 connections (100.0% coverage)
+
+Design statistics:
+   Minimum period:  53.788ns (Maximum frequency:  18.592MHz)
+   Maximum combinational path delay:  78.151ns
+   Maximum net delay:  15.583ns
+
+
+Analysis completed Sat Nov 11 08:00:56 2023
+--------------------------------------------------------------------------------
+
+Total time: 0 secs 
+
+==================================================
+
+ngdanno audsch.ncd map.ngm 
+Release  - ngdanno D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+Loading device database for application ngdanno from file "audsch.ncd".
+   "audsch" is an NCD, version 2.32, device xc3020a, package pc68, speed -7
+Loading device for application ngdanno from file '3020a.nph' in environment
+C:/Xilinx.
+Reading .ngm file "map.ngm"...
+Building NGA image...
+Annotating NGA image...
+Distributing delays...
+WARNING:Anno:152 - default voltage/temp values not available in speed file. 
+   Using ngdanno defaults of 4.75V and  85C.
+Resolving logical and physical hierarchies...
+Running NGD DRC...
+Writing .nga file "audsch.nga"...
+   92 logical models annotated
+
+==================================================
+
+ngd2edif -w -v fndtn audsch.nga time_sim.edn
+Release  - ngd2edif D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+   writing only delay properties to EDIF file
+   dedicated signals will be given global scope
+   writing  EDIF file to 'time_sim.edn' ...
+
+==================================================
+
+xcpy time_sim.edn c:\xilinx\active\projects\audsch\time_sim.edn
+
+==================================================
+
+bitgen audsch.ncd  -l -w -f bitgen.ut
+Release  - Bitgen D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+Loading device database for application Bitgen from file "audsch.ncd".
+   "audsch" is an NCD, version 2.32, device xc3020a, package pc68, speed -7
+Loading device for application Bitgen from file '3020a.nph' in environment
+C:/Xilinx.
+Opened constraints file audsch.pcf.
+
+Sat Nov 11 08:01:00 2023
+
+Running DRC.
+DRC detected 0 errors and 0 warnings.
+Saving ll file in "audsch.ll".
+Creating bit map...
+Saving bit stream in "audsch.bit".
+
+==================================================
+
+xcpy audsch.bit c:\xilinx\active\projects\audsch\audsch.bit
+
+==================================================
+
+xcpy audsch.ll c:\xilinx\active\projects\audsch\audsch.ll

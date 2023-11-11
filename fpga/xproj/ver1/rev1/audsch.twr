@@ -1,0 +1,132 @@
+--------------------------------------------------------------------------------
+Xilinx TRACE, Version D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+trce audsch.ncd audsch.pcf -e 3 -o audsch.twr
+
+Design file:              audsch.ncd
+Physical constraint file: audsch.pcf
+Device,speed:             xc3020a,-7 (C  )
+Report level:             error report
+--------------------------------------------------------------------------------
+
+WARNING:Timing:2491 - No timing constraints found, doing default enumeration.
+
+================================================================================
+Timing constraint: Default period analysis
+ 638 items analyzed, 0 timing errors detected.
+ Minimum period is  53.788ns.
+ Maximum delay is  78.151ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Default net enumeration
+ 96 items analyzed, 0 timing errors detected.
+ Maximum net delay is  15.583ns.
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock $Net00043_
+---------------+------------+------------+
+               |  Setup to  |  Hold to   |
+Source Pad     | clk (edge) | clk (edge) |
+---------------+------------+------------+
+$Net00021_     |   10.882(R)|    1.769(R)|
+$Net00039_     |   -0.347(R)|    4.847(R)|
+$Net00041_     |    1.038(R)|    3.462(R)|
+$Net00044_     |    0.667(R)|    3.833(R)|
+$Net00051_     |   -2.820(R)|    7.320(R)|
+$Net00053_     |   -0.604(R)|    5.104(R)|
+$Net00055_     |   -1.693(R)|    6.193(R)|
+$Net00124_     |   -5.760(R)|   10.260(R)|
+$Net00125_     |   -3.194(R)|    7.694(R)|
+---------------+------------+------------+
+
+Clock $Net00043_ to Pad
+---------------+------------+
+               | clk (edge) |
+Destination Pad|   to PAD   |
+---------------+------------+
+$Net00005_     |   63.649(R)|
+$Net00007_     |   60.569(R)|
+$Net00013_     |   93.767(R)|
+$Net00014_     |   92.210(R)|
+$Net00015_     |   93.444(R)|
+$Net00016_     |   92.187(R)|
+$Net00017_     |   91.090(R)|
+$Net00019_     |   56.429(R)|
+$Net00022_     |   56.429(R)|
+$Net00023_     |   60.588(R)|
+$Net00025_     |   69.468(R)|
+$Net00026_     |   65.593(R)|
+$Net00029_     |   69.881(R)|
+$Net00030_     |   62.276(R)|
+$Net00031_     |   66.147(R)|
+$Net00032_     |   63.020(R)|
+$Net00035_     |   66.665(R)|
+$Net00036_     |   66.109(R)|
+$Net00049_     |   66.261(R)|
+$Net00062_     |   60.588(R)|
+$Net00064_     |   60.588(R)|
+$Net00065_     |   56.429(R)|
+$Net00066_     |   56.429(R)|
+$Net00117_     |   64.451(R)|
+$Net00119_     |   51.558(R)|
+---------------+------------+
+
+Clock to Setup on destination clock $Net00043_
+---------------+---------+---------+---------+---------+
+               | Src/Dest| Src/Dest| Src/Dest| Src/Dest|
+Source Clock   |Rise/Rise|Fall/Rise|Rise/Fall|Fall/Fall|
+---------------+---------+---------+---------+---------+
+$Net00043_     |   53.788|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+$Net00006_     |$Net00049_     |   33.374|
+$Net00019_     |$Net00005_     |   42.521|
+$Net00021_     |$Net00117_     |   33.963|
+$Net00022_     |$Net00005_     |   43.428|
+$Net00023_     |$Net00005_     |   41.072|
+$Net00039_     |$Net00064_     |   25.721|
+$Net00041_     |$Net00023_     |   27.379|
+$Net00044_     |$Net00065_     |   33.696|
+$Net00051_     |$Net00062_     |   23.584|
+$Net00052_     |$Net00022_     |   24.140|
+$Net00053_     |$Net00019_     |   25.146|
+$Net00055_     |$Net00066_     |   27.016|
+$Net00058_     |$Net00025_     |   35.224|
+$Net00059_     |$Net00026_     |   33.921|
+$Net00062_     |$Net00005_     |   43.382|
+$Net00064_     |$Net00005_     |   42.858|
+$Net00065_     |$Net00005_     |   42.703|
+$Net00066_     |$Net00005_     |   41.473|
+---------------+---------------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0
+
+Constraints cover 638 paths, 96 nets, and 228 connections (100.0% coverage)
+
+Design statistics:
+   Minimum period:  53.788ns (Maximum frequency:  18.592MHz)
+   Maximum combinational path delay:  78.151ns
+   Maximum net delay:  15.583ns
+
+
+Analysis completed Sat Nov 11 08:00:56 2023
+--------------------------------------------------------------------------------
+

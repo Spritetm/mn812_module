@@ -1,0 +1,18 @@
+Release  - Bitgen D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+Loading device database for application Bitgen from file "audsch.ncd".
+   "audsch" is an NCD, version 2.32, device xc3020a, package pc68, speed -7
+Loading device for application Bitgen from file '3020a.nph' in environment
+C:/Xilinx.
+Opened constraints file audsch.pcf.
+
+Sat Nov 11 08:01:00 2023
+
+bitgen -l -w -g DonePin:PULLUP -g Oscillator:DISABLE -g ReadBack:COMMAND -g RESETTIME:AFTER -g DONETIME:BEFORE audsch.ncd 
+
+Running DRC.
+DRC detected 0 errors and 0 warnings.
+Saving ll file in "audsch.ll".
+Creating bit map...
+Saving bit stream in "audsch.bit".

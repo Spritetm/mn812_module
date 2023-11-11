@@ -1,0 +1,35 @@
+Release  - ngdbuild D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+
+Command Line: ngdbuild -p xc3020a-7-pc68 -uc audsch.ucf -dd ..
+c:\xilinx\active\projects\audsch\audsch.edn audsch.ngd 
+
+Launcher: Executing edif2ngd "c:\xilinx\active\projects\audsch\audsch.edn"
+"c:\xilinx\active\projects\audsch\xproj\ver1\audsch.ngo"
+Release  - edif2ngd D.19
+Copyright (c) 1995-2000 Xilinx, Inc.  All rights reserved.
+Writing the design to
+"c:/xilinx/active/projects/audsch/xproj/ver1/audsch.ngo"...
+Reading NGO file "c:/xilinx/active/projects/audsch/xproj/ver1/audsch.ngo" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "audsch.ucf" ...
+
+Checking timing specifications ...
+
+Checking expanded design ...
+WARNING:NgdBuild:454 - logical net '$I40/D5' has no load
+WARNING:NgdBuild:454 - logical net '$I40/D6' has no load
+WARNING:NgdBuild:454 - logical net '$I40/D7' has no load
+WARNING:NgdBuild:454 - logical net '$I6/CEO' has no load
+WARNING:NgdBuild:454 - logical net '$I34/CEO' has no load
+WARNING:NgdBuild:454 - logical net 'LADD<7>' has no load
+WARNING:NgdBuild:454 - logical net 'LADD<6>' has no load
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   7
+
+Writing NGD file "audsch.ngd" ...
+
+Writing NGDBUILD log file "audsch.bld"...

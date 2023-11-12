@@ -27,11 +27,12 @@ The three modules have separate subsystems:
 
  - 16 rotary encoders, read by two custom ASICs on the bottom board
  - LED rings around the encoder shafts, controlled by discrete logic on
-   the middle PCB
+   the middle PCB. The LED intensity is dimmable.
  - Buttons on the top PCB. These are read by a microcontroller on the
    bottom PCB.
  - LEDs under the buttons on the top PCB. The control logic for this 
-   partially is presumed to be on the middle PCB.
+   partially is presumed to be on the middle PCB. The global intensity
+   of the red and green LEDs can be set separately
  - Character displays on the top PCB. These are controlled by the
    XC3020A FPGA on the bottom PCB.
 
@@ -84,10 +85,13 @@ I used 8MHz since the MCU on the main PCB is specified up to that frequency.
 
 This sofware is written for an ESP32-S3 board. It has an API for interfacing with the
 module, as well as a basic demo: rotary encoders show a percentage and light up, pressing
-a button changes the color of its LED.
+a button changes the color of its LED. All this is written for ESP-IDF v5.0.4, although
+other versions may work as well.
 
 Pin mappings are defined in main/audbrd_bus.c, and by default are:
 
+ESP pin|Bus signal
+ --- | --- 
 14 | D0
 13 | D1
 12 | D2
@@ -132,7 +136,8 @@ modules had a different value on the IDxA pins and some higher address pins were
 to the IDxB pins; the module only responds if these two match. To make a single module
 respond, simply make the two sets of pins have the same values; I grounded all the
 IDxA and IDxB pins to achieve this. There's two unknown pins (unk1 and unk2) which value
-doesn't seem to matter for the workings of the device; I connected both to 5V.
+doesn't seem to matter for the workings of the device; I connected both to 5V but grounding
+them works as well.
 
 To write to a register:
 

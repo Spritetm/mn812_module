@@ -4,7 +4,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "audbrd_bus.h"
-#include "font-5x7.h"
 
 extern const uint8_t audsch_bit_start[] asm("_binary_audsch_bit_start");
 extern const uint8_t audsch_bit_end[] asm("_binary_audsch_bit_end");
@@ -34,7 +33,7 @@ void audbrd_chardisp_init() {
 }
 
 
-void audbrd_chardisp_set_bitmap(int pos, unsigned char *v) {
+void audbrd_chardisp_set_bitmap(int pos, const unsigned char *v) {
 	audbrd_bus_write(AUDBRD_REG_CHAR_CHARSEL, pos);
 	
 	for (int i=0; i<5; i++) {
@@ -42,7 +41,4 @@ void audbrd_chardisp_set_bitmap(int pos, unsigned char *v) {
 	}
 }
 
-void audbrd_chardisp_set_char(int pos, unsigned char c) {
-	audbrd_chardisp_set_bitmap(pos, &font_data[(c)*5]);
-}
 

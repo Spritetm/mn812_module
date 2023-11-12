@@ -4,14 +4,39 @@ mod_h=153;
 mod_w=172;
 mod_d=55;
 rad=(18.2/2); //fits an 18650
-th=2;
+th=1.2;
 flange_rest_th=5;
 screws_dist=87;
 screws_inset=3;
 insert_h=4.5; //actually 4 but we want somewhere for the melted material to go
 insert_d=4.9; //actually 5 but we want some extra material
 
-case();
+
+case_bot();
+//case_top();
+
+module case_top() {
+    intersection() {
+        case();
+        translate([-20, -20, 25]) cube([250, 250, 100]);
+    }
+}
+
+module case_bot() {
+    difference() {
+        case();
+        translate([-20, -20, 25]) cube([250, 250, 100]);
+    }
+
+    intersection() {
+        difference() {
+            translate([-rad, -rad, 0]) rounded_cube([mod_flange_h+rad*2, mod_w+rad*2, mod_d-mod_flange_d-flange_rest_th], rad);
+            translate([-rad+th, -rad+th, th]) rounded_cube([mod_flange_h+rad*2-th*2, mod_w+rad*2-th*2, mod_d-th*2], rad-th);
+        }
+        translate([-20, -20, 0]) cube([250, 250, 25+3]);
+    }
+}
+
 
 module insert_hole() {
     translate([0,0,-insert_h]) cylinder(d=insert_d, h=insert_h+1);
@@ -21,7 +46,7 @@ module case() {
     difference() {
         translate([-rad-th, -rad-th, -th]) rounded_cube([mod_flange_h+rad*2+th*2, mod_w+rad*2+th*2, mod_d+th*2], rad+th);
         difference() {
-        translate([-rad, -rad, 0]) rounded_cube([mod_flange_h+rad*2, mod_w+rad*2, mod_d-mod_flange_d-flange_rest_th], rad);
+        translate([-rad, -rad, 0]) rounded_cube([mod_flange_h+rad*2, mod_w+rad*2, mod_d], rad);
             translate([-15,-10+(mod_w/2-screws_dist/2),0]) cube([30,20,mod_h]);
             translate([-15,-10+(mod_w/2+screws_dist/2),0]) cube([30,20,mod_h]);
             translate([-15+mod_flange_h,-10+(mod_w/2-screws_dist/2),0]) cube([30,20,mod_h]);

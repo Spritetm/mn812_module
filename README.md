@@ -1,12 +1,12 @@
-#About this repo
+# About this repo
 
 This repo describes and has examples on how to interface with a module I got from
-Apex Electronix in LA. It has 16 rotary encoders, lots of buttons and LEDs and 16
-4-character 5x7 LED screens. Fun stuff!
+Apex Surplus in Los Angeles, USA. It has 16 rotary encoders, lots of buttons and 
+LEDs and 16 4-character 5x7 LED screens. Fun stuff!
 
 ![Image of the module in question](module.jpeg)
 
-Note: The module is from an AMS Neve DFC3D, which is a 'if you need to ask, you cannot
+Note: The module is from an AMS Neve DFC3D, which is an 'if you need to ask, you cannot
 afford it' priced digital audio workstation.
 
 The module has some markings on it. I'll note some of them so the Internet search engines 
@@ -21,9 +21,9 @@ will point other people with this module here:
  - MW812-095-ISS-5 (crossed through) LOGIC DISPLAY BOARD.
  - SMW-812-157, hand-written
 
-#Module hardware
+# Module hardware
 
-The three modules have separate subsystems:
+The three PCBs in the module have separate subsystems:
 
  - 16 rotary encoders, read by two custom ASICs on the bottom board
  - LED rings around the encoder shafts, controlled by discrete logic on
@@ -32,15 +32,20 @@ The three modules have separate subsystems:
    bottom PCB.
  - LEDs under the buttons on the top PCB. The control logic for this 
    partially is presumed to be on the middle PCB. The global intensity
-   of the red and green LEDs can be set separately
+   of the red and green LEDs can be set separately.
  - Character displays on the top PCB. These are controlled by the
    XC3020A FPGA on the bottom PCB.
 
 Note that the character displays don't work out of the box, as the FPGA
-needs a bitstream to be uploaded via the host connector.
+needs a bitstream that must be uploaded from an external source after each
+powerup.
 
-Back 64-pin connector: Two rows, A and B. A is closest to the rotary encoders,
-B is closest the edge of the PCB. Pin 1 of both rows is towards U35.
+The main connection to the external world, in an electronical sense, is a
+64-pin connector on the back. This has two rows, A and B. A is closest to 
+the rotary encoders, B is closest the edge of the PCB. Pin 1 of both rows 
+is towards U35. (Note that this is arbitrarily chosen, the PCB does not give
+a hint towards the orientation of the connector.) The pins on this connector 
+are 2.54mm pitch; sticking in yer olde standard double-row PCB header works great.
 
 Pin	|	A		|	B
 ---	|	---		|	---
@@ -77,11 +82,12 @@ Pin	|	A		|	B
 31	|	5V		|	5V
 32	|	GND		|	GND
 
-The module does not have an internal clock generator. Clock needs to be supplied on
+Note that all signals are 5V, but they seem to happily accept 3.3V signals.
+The module does not have an internal clock generator. A clock signal needs to be supplied on
 pin A15. It is unknown what clock specifically was used, but it's not critical:
 I used 8MHz since the MCU on the main PCB is specified up to that frequency.
 
-# Using this software
+# Using the software in this repository
 
 This sofware is written for an ESP32-S3 board. It has an API for interfacing with the
 module, as well as a basic demo: rotary encoders show a percentage and light up, pressing
@@ -126,18 +132,24 @@ GND| GND
 
 Also, make sure to ground all IDxA/IDxB lines as well as the unk1/unk2 lines.
 
+Note that technically the ESP32S3 GPIOs get overloaded when reading data from the bus, as
+the data pins output 5V and the ESP32S3 is a 3.3V part. If this worries you, putting
+some 1K resistors in series with the data pins will probably alleviate any practical
+issues. If you want to play it entirely safe, you'll need level converters or zeners
+or something to properly limit the voltage.
+
 # Interfacing with the module
 
 Logically, the main feature here is a parallel bus featuring 16 bidirectional data lines,
 8 address lines, two /CS pins (at least, I assume that that's what those are), and a R/nW
-line. It addresses 256 registers. The modules all seem to be connected to the same
-bus, but the IDxx pins seem to be used to select an individual module: presumably, all
-modules had a different value on the IDxA pins and some higher address pins were connected
-to the IDxB pins; the module only responds if these two match. To make a single module
-respond, simply make the two sets of pins have the same values; I grounded all the
-IDxA and IDxB pins to achieve this. There's two unknown pins (unk1 and unk2) which value
-doesn't seem to matter for the workings of the device; I connected both to 5V but grounding
-them works as well.
+line. It addresses 256 registers. In the actual audio workstation, the modules probably
+all were connected to the same bus, but the IDxx pins were to be used to select an 
+individual module: presumably, all modules had a different value on the IDxA pins and 
+some higher address pins were connected to the IDxB pins. This makes the module only 
+responds if these two match. To make a single module always respond, simply make the two 
+sets of pins have the same values; I grounded all the IDxA and IDxB pins to achieve 
+this. There's two unknown pins (unk1 and unk2) which value doesn't seem to matter for 
+the workings of the device; I connected both to 5V but grounding them works as well.
 
 To write to a register:
 
@@ -177,7 +189,8 @@ The module does not have a FPGA bitstream, so after power-up the character
 displays are inert. You need to upload a bitstream to the FPGA for it to do
 anything. A compatible bitstream is included here; note that the bitstream is
 created from scratch and as such the register layout it provides probably is
-not the same as the layout provided by the 'official' bitstream.
+not the same as the layout provided by the bitstream the original audio mixer
+used.
 
 To upload the bitstream, you need to send it bit-wise to the FPGA. To send a bit,
 you first write it to register F0 and then to register F1. To send the bitstream:

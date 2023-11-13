@@ -47,7 +47,7 @@ void audbrd_brightness_set(int which, int brightness) {
 	xSemaphoreTake(mutex, portMAX_DELAY);
 	int b=255-brightness;
 	if (which==AUDBRD_BRIGHT_ROTLEDS) {
-		audbrd_bus_write(AUDBRD_REG_DIM_ROTARYLED1, 0x00);
+		audbrd_bus_write(AUDBRD_REG_DIM_ROTARYLED1, 0xff);
 		audbrd_bus_write(AUDBRD_REG_DIM_ROTARYLED2, b);
 	}
 	if (which==AUDBRD_BRIGHT_BTNLEDS_RED) audbrd_bus_write(AUDBRD_REG_DIM_BTNLED_RED, b);
@@ -91,17 +91,6 @@ void audbrd_btn_led_set(int index, int rg) {
 
 static void audbrd_task(void *param) {
 	audbrd_evt_cb_t cb=(audbrd_evt_cb_t)param;
-	xSemaphoreTake(mutex, portMAX_DELAY);
-	//un-reset btn controller
-	audbrd_bus_write(AUDBRD_REG_BTN_CTL, 0x8000);
-	for (int i=0; i<16; i++) send_rotaryled_state(i);
-	for (int i=0; i<8; i++) send_btnled_state(i);
-	for (int i=0; i<64; i++) audbrd_chardisp_set_bitmap(i, &font_data[(' ')*5]);
-	audbrd_bus_write(AUDBRD_REG_DIM_ROTARYLED1, 0);
-	audbrd_bus_write(AUDBRD_REG_DIM_ROTARYLED2, 0);
-	audbrd_bus_write(AUDBRD_REG_DIM_BTNLED_RED, 0);
-	audbrd_bus_write(AUDBRD_REG_DIM_BTNLED_GREEN, 0);
-	xSemaphoreGive(mutex);
 	while(1) {
 		xSemaphoreTake(mutex, portMAX_DELAY);
 		while(1) {
@@ -138,5 +127,16 @@ void audbrd_init(audbrd_evt_cb_t cb) {
 		rotary[i].val=0;
 	}
 	mutex=xSemaphoreCreateMutex();
+	xSemaphoreTake(mutex, portMAX_DELAY);
+	//un-reset btn controller
+	audbrd_bus_write(AUDBRD_REG_BTN_CTL, 0x8000);
+	for (int i=0; i<16; i++) send_rotaryled_state(i);
+	for (int i=0; i<8; i++) send_btnled_state(i);
+	for (int i=0; i<64; i++) audbrd_chardisp_set_bitmap(i, &font_data[(' ')*5]);
+	audbrd_bus_write(AUDBRD_REG_DIM_ROTARYLED1, 0);
+	audbrd_bus_write(AUDBRD_REG_DIM_ROTARYLED2, 0);
+	audbrd_bus_write(AUDBRD_REG_DIM_BTNLED_RED, 0);
+	audbrd_bus_write(AUDBRD_REG_DIM_BTNLED_GREEN, 0);
+	xSemaphoreGive(mutex);
 	xTaskCreate(audbrd_task, "audbrd", 8192, cb, 5, NULL);
 }

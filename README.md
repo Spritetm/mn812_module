@@ -87,6 +87,12 @@ The module does not have an internal clock generator. A clock signal needs to be
 pin A15. It is unknown what clock specifically was used, but it's not critical:
 I used 8MHz since the MCU on the main PCB is specified up to that frequency.
 
+The module is quite power-hungry - with most of the LEDs on, it can pull a good 2.5A from
+the 5V power rail. If you want to save power (and are using something like a switch-mode
+power supply to power it), you can decide to under-volt it a little bit. In my experience, 
+it still works fine when supplied with 4.5V instead of 5V. Alternatively, you can dim the
+LEDs to make the module less power-hungry as well.
+
 # Using the software in this repository
 
 This sofware is written for an ESP32-S3 board. It has an API for interfacing with the

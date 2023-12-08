@@ -31,4 +31,9 @@ void ev_cb(int type, int which, int val) {
 
 void app_main(void) {
 	audbrd_init(ev_cb);
+	for (int i=0; i<16; i++) {
+		int v=(100*i)/15;
+		audbrd_rotary_set_value(i, v);
+		ev_cb(AUDBRD_EVT_ROTARY, i, v);
+	}
 }

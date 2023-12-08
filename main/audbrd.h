@@ -21,3 +21,8 @@ void audbrd_btn_led_set(int index, int rg);
 
 //Initialize board hardware and specify event callback
 void audbrd_init(audbrd_evt_cb_t cb);
+
+//Modify min/max and current limit of rotary encoder
+void audbrd_rotary_set_limits(int id, int min, int max);
+void audbrd_rotary_set_value(int id, int value);
+

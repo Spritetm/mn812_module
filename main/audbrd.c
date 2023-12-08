@@ -118,6 +118,17 @@ static void audbrd_task(void *param) {
 	}
 }
 
+void audbrd_rotary_set_limits(int id, int min, int max) {
+	rotary[id].min=min;
+	rotary[id].max=max;
+	send_rotaryled_state(id);
+}
+
+void audbrd_rotary_set_value(int id, int value) {
+	rotary[id].val=value;
+	send_rotaryled_state(id);
+}
+
 void audbrd_init(audbrd_evt_cb_t cb) {
 	audbrd_bus_setup();
 	audbrd_chardisp_init();
